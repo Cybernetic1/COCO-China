@@ -1,4 +1,4 @@
-![](/home/yky/misc-programs/COCO-China/COCO-logo.png) 
+![](COCO-logo.png) 
 
 # Coco 合作平台 (China version)
 
