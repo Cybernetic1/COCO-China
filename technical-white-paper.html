@@ -79,7 +79,6 @@
 	<p class="name">Total</p>
 	<pre class="score" id="total">0</pre>
 </div>
-<script src="vote-slider.js"></script>
 
 <hr>
 
@@ -97,24 +96,20 @@
 </ol>
 <p>其他格式的文件，由于没有可视化，那就不能观察到每个人的<i>局部贡献</i>，只能当成一个整体 unit.</p>
 
-<p>可视化的意思是，可以查看每一成员的贡献：</p>
-<img src="Git-visualization.png" style='width: 500px; object-fit: contain'>
-<br>
-<hr>
-
+<p>可视化的意思是，可以查看每一成员的贡献：（示范数据是随机产生的）</p>
 <div style="display: inline-block">
 	<center>
-	<p>Name: <b>Claris</b><br>
+	<p id="PersonStats">Name: <b>Claris</b><br>
 	Tokens: 10,000</p>
-	<img src="Claris.png" style='width: 80px; object-fit: contain'>
+	<img id="PersonPic" src="Claris.png" style='height: 120px; object-fit: contain'>
 	</center>
 </div>
 <div style="display: inline-block; width: 110px;">
 	<p id="PersonChooser" align="center">
-		<label><input type="radio" name="person" value="1"><span>Claris</span></label>
-		<label><input type="radio" name="person" value="2"><span>Abeer</span></label>
-		<label><input type="radio" name="person" value="3"><span>Pete</span></label>
-		<label><input type="radio" name="person" value="4"><span>Eric</span></label>
+		<label><input type="radio" name="person" value=0><span>Claris</span></label>
+		<label><input type="radio" name="person" value=1><span>Abeer</span></label>
+		<label><input type="radio" name="person" value=2><span>Pete</span></label>
+		<label><input type="radio" name="person" value=3><span>Eric</span></label>
 	</p>
 </div>
 <div style="display: inline-block">
@@ -152,7 +147,7 @@
 </div>
 <hr>
 
-<p>再点击进去文件内：</p>
+<p>类似地，可以再点击进文件内：</p>
 <img src="Git-visualization-2.png" style='width: 650px; object-fit: contain'>
 
 <hr>
@@ -168,6 +163,7 @@
 	<li>Allow users to send messages from cluster to cluster</li>
 </ol>
 
-<script></script>
+<script src="vote-slider.js"></script>
+<script src="file-map.js"></script>
 </body>
 </html>
