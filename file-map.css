@@ -1,0 +1,55 @@
+#PersonChooser input[type="radio"] + span:hover {
+	background-color: LightPink;
+	color: black;
+}
+
+#PersonChooser input[type="radio"] {
+	display: none;
+}
+
+#PersonChooser span {
+	display: inline-block;
+	width: 80px;
+	padding: 5px;
+	border: 2px solid white;
+	border-radius: 3px;
+	margin-bottom: 15px;
+}
+
+#PersonChooser input[type="radio"]:checked + span {
+  background-color: Fuchsia;
+  color: black;
+  font-weight: bold;
+}
+
+#Files {
+	overflow: auto;
+	width: 650px;
+	height: 250px;
+	/* border: 2px solid #000000; */
+	background-color: #555555;
+}
+
+.File {
+	position: relative;
+	height: 25px;
+	margin-left: 15px;
+}
+
+.FileMap {
+	width: 600px;
+	height: 30px;
+	background-color: #eeeedd;
+	border:2px solid #000000;
+	position:absolute;
+	left:0px;
+	top:0px;
+	border-radius: 10px;
+}
+
+label.FileName {
+	position:absolute;
+	left:10px;
+	top:5px;
+	font-weight: bold;
+}

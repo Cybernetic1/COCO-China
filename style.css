@@ -1,8 +1,4 @@
 body {
-  /* font-family-sans-serif: Helvetica, Arial, "Microsoft Yahei", "微软雅黑", STXihei, "华文细黑", sans-serif; */
-  /* font-family: Helvetica, Arial, "Microsoft Yahei", "微软雅黑", STXihei, "华文细黑", sans-serif; */
-  /* font-family-serif: Georgia, "Times New Roman", Times, serif; */
-  /* font-family: Georgia, "Times New Roman", Times, serif; */
   background-color: DimGray; 
 }
 
@@ -13,4 +9,3 @@ h1, h2, h3, a {
 p, li {
   color: white;
 }
-

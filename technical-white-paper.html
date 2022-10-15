@@ -7,8 +7,9 @@
   <title>Crossing the Snow -- business proposal</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="YKY" content="">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" type="text/css" href="style.css">
   <link rel="stylesheet" type="text/css" href="vote-slider.css">
+  <link rel="stylesheet" type="text/css" href="file-map.css">
   <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 </head>
 
@@ -98,6 +99,58 @@
 
 <p>可视化的意思是，可以查看每一成员的贡献：</p>
 <img src="Git-visualization.png" style='width: 500px; object-fit: contain'>
+<br>
+<hr>
+
+<div style="display: inline-block">
+	<center>
+	<p>Name: <b>Claris</b><br>
+	Tokens: 10,000</p>
+	<img src="Claris.png" style='width: 80px; object-fit: contain'>
+	</center>
+</div>
+<div style="display: inline-block; width: 110px;">
+	<p id="PersonChooser" align="center">
+		<label><input type="radio" name="person" value="1"><span>Claris</span></label>
+		<label><input type="radio" name="person" value="2"><span>Abeer</span></label>
+		<label><input type="radio" name="person" value="3"><span>Pete</span></label>
+		<label><input type="radio" name="person" value="4"><span>Eric</span></label>
+	</p>
+</div>
+<div style="display: inline-block">
+	<p><strong>Files</strong></p>
+	<div id="Files">
+		<div class="File">
+			<canvas class="FileMap">Unsupported</canvas>
+			<label class="FileName">README.md</label class="FileName">
+		</div><br>
+		<div class="File">
+			<canvas class="FileMap">Unsupported</canvas>
+			<label class="FileName">main.py</label class="FileName">
+		</div><br>
+		<div class="File">
+			<canvas class="FileMap">Unsupported</canvas>
+			<label class="FileName">model.py</label class="FileName">
+		</div><br>
+		<div class="File">
+			<canvas class="FileMap">Unsupported</canvas>
+			<label class="FileName">introduction.html</label class="FileName">
+		</div><br>
+		<div class="File">
+			<canvas class="FileMap">Unsupported</canvas>
+			<label class="FileName">docs/</label class="FileName">
+		</div><br>
+		<div class="File">
+			<canvas class="FileMap">Unsupported</canvas>
+			<label class="FileName">AI-modern-approach.pdf</label class="FileName">
+		</div><br>
+		<div class="File">
+			<canvas class="FileMap">Unsupported</canvas>
+			<label class="FileName">diagram.svg</label class="FileName">
+		</div>
+	</div>
+</div>
+<hr>
 
 <p>再点击进去文件内：</p>
 <img src="Git-visualization-2.png" style='width: 650px; object-fit: contain'>
