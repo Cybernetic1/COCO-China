@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<head>
+  <meta name="Crossing the Snow -- technical white paper"/>
+  <meta charset="UTF-8">
+  <title>Crossing the Snow -- business proposal</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="YKY" content="">
+  <link rel="stylesheet" href="style.css">
+  <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+</head>
+
+<body>
+
+<img src="crossing-the-snow-3.jpg" style='width: 500px; object-fit: contain'>
+
+<h1>渡过雪原 &mdash; Technical White Paper</h1>
+
+<h3>目录</h3>
+
+<ul style="list-style-type:disc">
+	<li><a href="#Aragon-interface">DAO (Aragon) 界面</a></li>
+	<li><a href="#Git-interface">资料库 (Git) 界面</a></li>
+	<li><a href="#Discord-interface">聊天室 (Discord) 界面</a></li>
+</ul>
+
+<hr>
+
+<h2 id="Aragon-interface">DAO (Aragon) 界面</h2>
+
+<p>Aragon 负责的是 tokens，它不管「内容」方面的东西。</p>
+
+<ul style="list-style-type:disc">
+	<li>Voting</li>
+	<li>Assign tokens</li>
+</ul>
+
+<hr>
+
+<h2 id="Git-interface">资料库 (Git) 界面</h2>
+
+<p>Git 这边需要的是 将每个成员的贡献「可视化」出来，以方便其他人 判断他的贡献价值。</p>
+
+<p>注意 我们是用 Git 的 API 读取 repository 资料，这并不依赖 GitHub 提供资料。</p>
+
+<p>我们打算支缓这几种文件的可视化，因为它们的格式是很标准的：</p>
+<ol>
+	<li>Text 档案 可视化</li>
+	<li>SVG 可视化</li>
+	<li>网页 可视化</li>
+</ol>
+<p>其他格式的文件，由于没有可视化，那就不能观察到每个人的<i>局部贡献</i>，只能当成一个整体 unit.</p>
+
+<p>可视化的意思是，可以查看每一成员的贡献：</p>
+<img src="Git-visualization.png" style='width: 500px; object-fit: contain'>
+
+<p>再点击进去文件内：</p>
+<img src="Git-visualization-2.png" style='width: 650px; object-fit: contain'>
+
+<hr>
+
+<h2 id="Discord-interface">聊天室 (Discord) 界面</h2>
+
+<p>Discord 的目的是 管理「聊天室」，每个 cluster 有独立的聊天室，互相之间可以传递讯息：</p>
+<img src="clusters.png" style='width: 400px; object-fit: contain'>
+
+<ol>
+	<li>将 Discord 的聊天内容搬到 微信 / QQ群组</li>
+	<li>Allow users to create new clusters</li>
+	<li>Allow users to send messages from cluster to cluster</li>
+</ol>
+
+<script></script>
+</body>
+</html>
