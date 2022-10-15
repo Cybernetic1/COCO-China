@@ -8,6 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="YKY" content="">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" type="text/css" href="vote-slider.css">
   <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 </head>
 
@@ -35,6 +36,49 @@
 	<li>Voting</li>
 	<li>Assign tokens</li>
 </ul>
+
+<p>这是 投票 demo，它会自动将总数调至 100：</p>
+<div class="slidecontainer">
+	<p class="name">Claris</p>
+	<pre class="score">0</pre>
+	<input type="range" min="0" max="100" value="0" class="slider" id="0">
+</div>
+
+<div class="slidecontainer">
+	<p class="name">Abeer</p>
+	<pre class="score">0</pre>
+	<input type="range" min="0" max="100" value="0" class="slider" id="1">
+</div>
+
+<div class="slidecontainer">
+	<p class="name">Pete</p>
+	<pre class="score">0</pre>
+	<input type="range" min="0" max="100" value="0" class="slider" id="2">
+</div>
+
+<div class="slidecontainer">
+	<p class="name">Eric</p>
+	<pre class="score">0</pre>
+	<input type="range" min="0" max="100" value="0" class="slider" id="3">
+</div>
+
+<div class="slidecontainer">
+	<p class="name">YKY</p>
+	<pre class="score">0</pre>
+	<input type="range" min="0" max="100" value="0" class="slider" id="4">
+</div>
+
+<div class="slidecontainer">
+	<p class="name">Roger</p>
+	<pre class="score">0</pre>
+	<input type="range" min="0" max="100" value="0" class="slider" id="5">
+</div>
+
+<div class="slidecontainer">
+	<p class="name">Total</p>
+	<pre class="score" id="total">0</pre>
+</div>
+<script src="vote-slider.js"></script>
 
 <hr>
 
