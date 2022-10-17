@@ -2,18 +2,20 @@
 <html lang="zh-Hans">
 
 <head>
-  <meta name="Crossing the Snow -- technical white paper"/>
-  <meta charset="UTF-8">
-  <title>Crossing the Snow -- business proposal</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="YKY" content="">
-  <link rel="stylesheet" type="text/css" href="style.css">
-  <link rel="stylesheet" type="text/css" href="vote-slider.css">
-  <link rel="stylesheet" type="text/css" href="file-map.css">
-  <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<meta name="Crossing the Snow -- technical white paper"/>
+	<meta charset="UTF-8">
+	<title>Crossing the Snow -- business proposal</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="YKY" content="">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="vote-slider.css">
+	<link rel="stylesheet" type="text/css" href="file-map.css">
+	<link rel="stylesheet" type="text/css" href="tasks-graph.css">
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<script src="https://unpkg.com/neovis.js@2.0.2"></script>
 </head>
 
-<body>
+<body onload="draw()">
 
 <img src="crossing-the-snow-3.jpg" style='width: 500px; object-fit: contain'>
 
@@ -105,7 +107,7 @@
 	</center>
 </div>
 <div style="display: inline-block; width: 110px;">
-	<p id="PersonChooser" align="center">
+	<p class="PersonChooser" align="center">
 		<label><input type="radio" name="person" value=0><span>Claris</span></label>
 		<label><input type="radio" name="person" value=1><span>Abeer</span></label>
 		<label><input type="radio" name="person" value=2><span>Pete</span></label>
@@ -148,7 +150,24 @@
 <hr>
 
 <p>类似地，可以再点击进文件内：</p>
-<img src="Git-visualization-2.png" style='width: 650px; object-fit: contain'>
+<div style="display: inline-block; vertical-align: top;">
+	<center>
+	<p id="PersonStats2">Name: <b>Claris</b><br>
+	Tokens: 10,000</p>
+	<img id="PersonPic2" src="Claris.png" style='height: 120px; object-fit: contain'>
+	</center>
+</div>
+<div style="display: inline-block; vertical-align: top; width: 110px;">
+	<p class="PersonChooser" align="center">
+		<label><input type="radio" name="person2" value=0><span>Claris</span></label>
+		<label><input type="radio" name="person2" value=1><span>Abeer</span></label>
+		<label><input type="radio" name="person2" value=2><span>Pete</span></label>
+		<label><input type="radio" name="person2" value=3><span>Eric</span></label>
+	</p>
+</div>
+<div style="display: inline-block">
+	<img src="Git-visualization-2.png" style='width: 650px; object-fit: contain'>
+</div>
 
 <hr>
 
@@ -162,6 +181,67 @@
 	<li>Allow users to create new clusters</li>
 	<li>Allow users to send messages from cluster to cluster</li>
 </ol>
+
+<script>
+	function draw() {
+		var config = {
+			containerId: "viz",
+			neo4j: {
+				serverUrl: "bolt://localhost:7687",
+				serverUser: "neo4j",
+				serverPassword: "l0wsecurity",
+            },
+			labels: {
+				"Node": {
+					label: "name",
+					size: "pagerank",
+					community: "community"
+				}
+			},
+			relationships: {
+				"Link": {
+					label: "name",
+					thickness: "count"
+				}
+			},
+			// initialCypher: "MATCH p=(:Char)-[:Smaller]->(:Char) RETURN p"
+			// initialCypher: "Match (n)-[r]->(m) Return n,r,m"
+			initialCypher: "MATCH (n) OPTIONAL MATCH (n)-[r]-() RETURN n, r"
+		}
+
+		var viz = new NeoVis.default(config);
+		viz.render();
+	}
+</script>
+
+<hr>
+
+<h2>任务表 demo:</h2>
+
+<div id="viz-buttons">
+<button type="button">+ ◯</button>
+<button type="button">- ◯</button>
+<button type="button">○┄○</button>
+</div><br>
+
+<div style="display: inline-block; vertical-align: top;">
+<form action="">
+	<label for="taskname">Task name</label><br>
+	<input type="text" id="TaskName" name="TaskName"><br>
+	<label for="expTokens">Expected tokens</label><br>
+	<input type="number" id="ExpTokens" name="ExpTokens"><br>
+	<label for="expTime">Expected time</label><br>
+	<input type="number" id="ExpTime" name="ExpTime"><br>
+	<label for="expTokens">Expected #workers</label><br>
+	<input type="number" id="ExpWorkers" name="ExpWorkers"><br>
+	<label for="Details">Details</label><br>
+	<textarea rows = "10" cols = "30" name = "Details">Enter details here...
+	</textarea><br>
+	<label for="submit">(Select parent node first)</label><br>
+	<input type="submit" value="Add task">
+</form>
+</div>
+<div id="viz" style="display: inline-block"></div>
 
 <script src="vote-slider.js"></script>
 <script src="file-map.js"></script>

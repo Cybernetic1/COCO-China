@@ -1,11 +1,11 @@
 body {
-  background-color: DimGray; 
+	background-color: DimGray; 
 }
 
 h1, h2, h3, a {
-  color: cyan;
+	color: cyan;
 }
 
-p, li {
-  color: white;
+p, li, label {
+	color: white;
 }

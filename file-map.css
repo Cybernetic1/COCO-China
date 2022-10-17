@@ -1,26 +1,4 @@
-#PersonChooser input[type="radio"] + span:hover {
-	background-color: LightPink;
-	color: black;
-}
-
-#PersonChooser input[type="radio"] {
-	display: none;
-}
-
-#PersonChooser span {
-	display: inline-block;
-	width: 80px;
-	padding: 5px;
-	border: 2px solid white;
-	border-radius: 3px;
-	margin-bottom: 15px;
-}
-
-#PersonChooser input[type="radio"]:checked + span {
-  background-color: Fuchsia;
-  color: black;
-  font-weight: bold;
-}
+/* a FileMap is an HTML canvas representing a file */
 
 #Files {
 	overflow: auto;
@@ -34,6 +12,10 @@
 	position: relative;
 	height: 25px;
 	margin-left: 15px;
+}
+
+.File label {
+	color: black;
 }
 
 .FileMap {
@@ -52,4 +34,30 @@ label.FileName {
 	left:10px;
 	top:5px;
 	font-weight: bold;
+}
+
+/* PersonChooser is a set of radio buttons */
+
+.PersonChooser input[type="radio"] + span:hover {
+	background-color: LightPink;
+	color: black;
+}
+
+.PersonChooser input[type="radio"] {
+	display: none;
+}
+
+.PersonChooser span {
+	display: inline-block;
+	width: 80px;
+	padding: 5px;
+	border: 2px solid white;
+	border-radius: 3px;
+	margin-bottom: 15px;
+}
+
+.PersonChooser input[type="radio"]:checked + span {
+  background-color: Fuchsia;
+  color: black;
+  font-weight: bold;
 }
