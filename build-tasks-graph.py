@@ -26,23 +26,23 @@ def create_node(tx, name):
 			name=name)
 
 with driver.session() as session:
-	session.execute_write(create_node, "root")
-	session.execute_write(create_node, "商业计划书")
-	session.execute_write(create_node, "技术白皮书")
-	session.execute_write(create_node, "网站")
-	session.execute_write(create_node, "Git 界面")
-	session.execute_write(create_node, "Neo4j 界面")
-	session.execute_write(create_node, "聊天室 界面")
-	session.execute_write(create_node, "DAO 界面")
+	session.write_transaction(create_node, "root")
+	session.write_transaction(create_node, "商业计划书")
+	session.write_transaction(create_node, "技术白皮书")
+	session.write_transaction(create_node, "网站")
+	session.write_transaction(create_node, "Git 界面")
+	session.write_transaction(create_node, "Neo4j 界面")
+	session.write_transaction(create_node, "聊天室 界面")
+	session.write_transaction(create_node, "DAO 界面")
 
 	# Link all nodes as children of 'root'
-	session.execute_write( lambda tx: tx.run(
+	session.write_transaction( lambda tx: tx.run(
 		"MATCH (a:Node), (b:Node) WHERE b.name = 'root'"
 		"CREATE (a)-[r:SubTask]->(b)"
 		) )
 
 	# Remove self-loop
-	session.execute_write( lambda tx: tx.run(
+	session.write_transaction( lambda tx: tx.run(
 		"MATCH (n:Node)-[r]->(n) WHERE n.name = 'root' DELETE r"
 		) )
 
