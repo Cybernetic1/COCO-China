@@ -1,4 +1,4 @@
-![](COCO-logo.png) 
+![](images/COCO-logo.png) 
 
 # Coco 合作平台 (China version)
 
@@ -10,11 +10,23 @@ Coco 是一个 去中心化，自主的，实名制的，开源的，盈利的�
 
 主要特点：
 
-![](COCO-poster-cn.png) 
+![](images/COCO-poster-cn.png) 
 
 Coco 名称源自 co-operative co-evolution 的缩写，意即「协同进化」，是一种基于 进化论 的机器学习算法 （这纯粹是灵感的来源，实际上 Coco 并没有使用这个算法）。
 
-Coco 的 [白皮书 初稿](COCO-white-paper-cn.pdf) 。 这份 初稿 仅供参考，里面有很多构想 仍未落实。 事实上 Coco 涉及的是 资本主义 经济学里 所谓 corporate governance（企业管理）的问题，这个问题是 一整门学科，它不会有单一个简单答案。 换句话说，Coco 是一个开放式的实验。
+Coco 的 [白皮书 初稿](docs/COCO-white-paper-cn.pdf) 。 这份 初稿 仅供参考，里面有很多构想 仍未落实。 事实上 Coco 涉及的是 资本主义 经济学里 所谓 corporate governance（企业管理）的问题，这个问题是 一整门学科，它不会有单一个简单答案。 换句话说，Coco 是一个开放式的实验。
+
+Update
+------
+![](images/DAO-working-example.png) 
+
+我们弄了一份 新的 [技术白皮书](technical-white-paper.html), 是 HTML 的形式，里面有 示范程式 可以试用。 
+
+我们也在 Aragon 平台上 开了一条 DAO 区块链 (基于 Ethereum)，可以用来储存 成员的 credits.
+
+我也在考虑将项目改名为「渡过雪原」，来自 宫泽贤治 的童话故事。（迟些会解释一下....）
+
+这个 README 档案将会更新。
 
 ## 开发计划
 
