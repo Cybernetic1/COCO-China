@@ -11,24 +11,57 @@ var viz;
 function redraw() {
 	var config = {
 		containerId: "viz",
+		nonFlat: true,
 		neo4j: {
 			serverUrl: "bolt://localhost:7687",
 			serverUser: "neo4j",
 			serverPassword: "l0wsecurity",
-		},
+			},
+		visConfig: {
+			nodes: {
+				shape: 'box',
+				size: 160,
+				scaling: {
+					label: {
+						enabled: true,
+						min: 80,
+						max: 120,
+						}
+					}
+				},
+			edges: {
+				arrows: {
+					to: { enabled: true }
+					}
+				},
+			},
 		labels: {
 			"Node": {
-				label: "name",
-				size: "pagerank",
-				community: "community"
-			}
-		},
+				property: {
+					label: "name",
+					},
+				// size: "pagerank",
+				// community: "community",
+				// [NeoVis.NEOVIS_ADVANCED_CONFIG]: {
+					static: {
+						// font: {	size: 26, color: "#ff0000" },
+						// shape: 'square',
+						scaling: {
+							min: 50,
+							max: 100,
+							label: { enabled: true },
+							},
+						widthConstraint: { maximum: 150 }
+						}
+				//	}
+				}
+			},
 		relationships: {
 			"SubTask": {
 				label: "name",
 				thickness: "count"
-			}
-		},
+				}
+			},
 		// initialCypher: "MATCH p=(:Char)-[:Smaller]->(:Char) RETURN p"
 		// initialCypher: "Match (n)-[r]->(m) Return n,r,m"
 		initialCypher: "MATCH (n) OPTIONAL MATCH (n)-[r]-() RETURN n, r"
@@ -84,6 +117,22 @@ async function delNode() {
 			))
 		} finally {
 		console.log("Deleted node.");
+		redraw();
+		}
+	}
+
+async function editNode() {
+	const taskname = document.getElementById("TaskName").value;
+	console.log("Trying to edit node #", clicked_id_A);
+
+	try {
+		const result = await session.writeTransaction(tx => tx.run(
+			"MATCH (n:Node) WHERE ID(n)=$id \
+			SET n.name = $taskname",
+			{ id: clicked_id_A, taskname: taskname }
+			))
+		} finally {
+		console.log("Edited node.");
 		redraw();
 		}
 	}
