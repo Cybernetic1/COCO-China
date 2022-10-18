@@ -59,13 +59,13 @@ const session = driver.session();
 
 async function addNode() {
 	const taskname = document.getElementById("TaskName").value;
-	console.log("Trying to add SubTask", taskname, "to node #", clicked_id);
+	console.log("Trying to add node", taskname, "to node #", clicked_id_A);
 
 	try {
 		const result = await session.writeTransaction(tx => tx.run(
 			"MATCH (old:Node) WHERE ID(old)=$id \
 			CREATE (new:Node {name:$taskname})-[:SubTask]->(old)",
-			{ id: clicked_id, taskname: taskname }
+			{ id: clicked_id_A, taskname: taskname }
 			))
 		} finally {
 		console.log("Added node.");
@@ -74,13 +74,13 @@ async function addNode() {
 	}
 
 async function delNode() {
-	console.log("Trying to delete node #", clicked_id);
+	console.log("Trying to delete node #", clicked_id_A);
 
 	try {
 		const result = await session.writeTransaction(tx => tx.run(
 			"MATCH (n:Node) WHERE ID(n)=$id \
 			DETACH DELETE (n)",
-			{ id: clicked_id }
+			{ id: clicked_id_A }
 			))
 		} finally {
 		console.log("Deleted node.");
