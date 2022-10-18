@@ -22,7 +22,29 @@ If all goes well you'd see notice saying you're connected as user 'neo4j'
  Seems no longer needed. )
 
 Now you're ready to use the Neo4j graph DB server.
-Refer to NOTES-Cyphers.txt for frequently used Cypher commands.
+
+Useful Cyphers
+==============
+
+Delete all nodes and relationships:
+	MATCH (n:Type) DETACH DELETE n
+
+Delete all relationships:
+	match ()-[r]->() delete r;
+
+Return all relationships:
+	Match (n)-[r]->(m) Return n,r,m
+
+Return all nodes and relationships, including singleton nodes:
+	MATCH (n) OPTIONAL MATCH (n)-[r]-() RETURN n, r;
+
+Create relationship:
+	MATCH (a:Char), (b:Char) WHERE ID(a) - ID(b) = 1
+	CREATE (a)-[r:Smaller]->(b)
+
+Create new node with relationship to old node:
+	MATCH (old:Node {id:'1'})
+	CREATE (old) -[:RELATED_TO]-> (new:Node {id:'2'})
 
 Create our "Tasks" graph with Python
 ====================================

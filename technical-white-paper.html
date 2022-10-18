@@ -5,17 +5,16 @@
 	<meta name="Crossing the Snow -- technical white paper"/>
 	<meta charset="UTF-8">
 	<title>Crossing the Snow -- business proposal</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="YKY" content="">
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<link rel="stylesheet" type="text/css" href="vote-slider.css">
 	<link rel="stylesheet" type="text/css" href="file-map.css">
 	<link rel="stylesheet" type="text/css" href="tasks-graph.css">
 	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
-	<script src="https://unpkg.com/neovis.js@2.0.2"></script>
+	<script src="neovis.js"></script>
+	<script src="neo4j-web.min.js"></script>
 </head>
 
-<body onload="draw()">
+<body onload="redraw()">
 
 <img src="crossing-the-snow-3.jpg" style='width: 500px; object-fit: contain'>
 
@@ -182,51 +181,36 @@
 	<li>Allow users to send messages from cluster to cluster</li>
 </ol>
 
-<script>
-	function draw() {
-		var config = {
-			containerId: "viz",
-			neo4j: {
-				serverUrl: "bolt://localhost:7687",
-				serverUser: "neo4j",
-				serverPassword: "l0wsecurity",
-            },
-			labels: {
-				"Node": {
-					label: "name",
-					size: "pagerank",
-					community: "community"
-				}
-			},
-			relationships: {
-				"Link": {
-					label: "name",
-					thickness: "count"
-				}
-			},
-			// initialCypher: "MATCH p=(:Char)-[:Smaller]->(:Char) RETURN p"
-			// initialCypher: "Match (n)-[r]->(m) Return n,r,m"
-			initialCypher: "MATCH (n) OPTIONAL MATCH (n)-[r]-() RETURN n, r"
-		}
-
-		var viz = new NeoVis.default(config);
-		viz.render();
-	}
-</script>
-
 <hr>
 
 <h2>任务表 demo:</h2>
 
-<div id="viz-buttons">
-<button type="button">+ ◯</button>
-<button type="button">- ◯</button>
-<button type="button">○┄○</button>
-</div><br>
+<div id="viz-buttons" style="display:inline">
+	<div>
+		<button type="button" onclick="redraw()">⟳<br>
+		<small>Redraw</small></button>
+	</div>
+	<div>
+		<button type="button" onclick="addNode()">+③⇢①<br>
+		<small>Add Node</small></button>
+	</div>
+	<div>
+		<button type="button" onclick="delNode()">-①<br>
+		<small>Delete Node</small></button>
+	</div>
+	<div>
+		<button type="button" onclick="linkNodes()">②⇢①<br>
+		<small>Link Nodes</small></button>
+	</div>
+</div>
+<div id="NodeAB" style="display:inline-block; vertical-align: center;">
+② <span id="NodeB">none</span>
+⇢ ① <span id="NodeA">none</span>
+</div><br><br>
 
-<div style="display: inline-block; vertical-align: top;">
-<form action="">
-	<label for="taskname">Task name</label><br>
+<div id="new-task-data" style="display: inline-block; vertical-align: top;">
+	<p><span style="font-size:30px">③</span>= New Task:</p>
+	<label for="taskname">Name</label><br>
 	<input type="text" id="TaskName" name="TaskName"><br>
 	<label for="expTokens">Expected tokens</label><br>
 	<input type="number" id="ExpTokens" name="ExpTokens"><br>
@@ -236,14 +220,12 @@
 	<input type="number" id="ExpWorkers" name="ExpWorkers"><br>
 	<label for="Details">Details</label><br>
 	<textarea rows = "10" cols = "30" name = "Details">Enter details here...
-	</textarea><br>
-	<label for="submit">(Select parent node first)</label><br>
-	<input type="submit" value="Add task">
-</form>
+	</textarea>
 </div>
 <div id="viz" style="display: inline-block"></div>
 
 <script src="vote-slider.js"></script>
 <script src="file-map.js"></script>
+<script src="tasks-graph.js"></script>
 </body>
 </html>

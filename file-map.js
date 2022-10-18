@@ -2,7 +2,7 @@ const names = ["Claris", "Abeer", "Pete", "Eric"];
 
 // Get all the files:
 const files = document.querySelectorAll('div[class="File"]');
-console.log("Total files = ", files.length);
+console.log("Found Git files:", files.length);
 
 for (const file of files) {
 	file.contribs = [];

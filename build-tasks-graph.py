@@ -47,5 +47,5 @@ with driver.session() as session:
 		) )
 
 driver.close()
-
+print("Successfully created Tasks graph.")
 exit(0)
