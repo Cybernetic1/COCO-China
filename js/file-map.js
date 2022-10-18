@@ -21,7 +21,7 @@ for (const radioButton of radioButtons) {
 function showPerson(e) {
 	// console.log(e);
 	if (this.checked) {
-		document.getElementById("PersonPic").src = names[this.value] + ".png";
+		document.getElementById("PersonPic").src = "images/" + names[this.value] + ".png";
 		document.getElementById("PersonStats").innerHTML = "Name: " + names[this.value] + "<br>Tokens: 10,000";
 		for (const file of files) {
 			var canvas = file.children[0];
@@ -46,7 +46,7 @@ for (const radioButton of radioButtons2) {
 function showPerson2(e) {
 	// console.log(e);
 	if (this.checked) {
-		document.getElementById("PersonPic2").src = names[this.value] + ".png";
+		document.getElementById("PersonPic2").src = "images/" + names[this.value] + ".png";
 		document.getElementById("PersonStats2").innerHTML = "Name: " + names[this.value] + "<br>Tokens: 10,000";
 		}
 	}
