@@ -1,7 +1,14 @@
+:root {
+  --bg: #C9F9FF;
+  /* These colors are picked to match NeoViz nodes */
+  --node: #97c2fc;
+  --nodeBorder: #2b7ce9;
+}
+
 #viz {
 	width: 700px;
 	height: 700px;
-	background-color: WhiteSmoke;
+	background-color: var(--bg);
 	}
 
 #viz-buttons {
@@ -22,7 +29,7 @@
 #viz-buttons button {
 	/* width: 70px; */
 	/* height: 40px; */
-	background-color: WhiteSmoke;
+	background-color: var(--bg);
 	font-size: 30px;
 	border-radius: 10px;
 	border:2px solid Black;
@@ -37,7 +44,7 @@
 	}
 
 #NodeAB {
-	background-color: WhiteSmoke;
+	background-color: var(--bg);
 	border-radius: 10px;
 	padding: 20px;
 	color: Black;
@@ -51,10 +58,10 @@
 #NodeAB span {
 	width: 90px;
 	height: 30px;
-	background-color: #97c2fc;	/* This color is picked to match NeoViz node color */
+	background-color: var(--node);
 	color: Black;
 	font-size: 20px;
-	border:2px solid #2b7ce9;
+	border:2px solid var(--nodeBorder);
 	border-radius: 10px;
 	padding: 10px;
 	}

@@ -118,18 +118,18 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.2265229"
-     inkscape:cx="400"
+     inkscape:zoom="0.97763961"
+     inkscape:cx="520.69887"
      inkscape:cy="560"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      inkscape:document-rotation="0"
      showgrid="false"
-     inkscape:window-width="1920"
-     inkscape:window-height="1055"
-     inkscape:window-x="0"
+     inkscape:window-width="958"
+     inkscape:window-height="1016"
+     inkscape:window-x="960"
      inkscape:window-y="0"
-     inkscape:window-maximized="1" />
+     inkscape:window-maximized="0" />
   <metadata
      id="metadata750">
     <rdf:RDF>
@@ -147,7 +147,7 @@
      inkscape:groupmode="layer"
      id="layer1">
     <ellipse
-       style="opacity:0.5;vector-effect:none;fill:#00ffff;fill-opacity:1;stroke:none;stroke-width:0.396875;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:0.79375, 0.79375;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers fill stroke"
+       style="opacity:1;vector-effect:none;fill:#97c2fc;fill-opacity:1;stroke:#2b7ce9;stroke-width:0.529167;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers fill stroke;font-variation-settings:normal;stop-color:#000000;stop-opacity:1"
        id="path3024-7"
        cx="60.944279"
        cy="166.58611"
@@ -292,7 +292,7 @@
          inkscape:connector-curvature="0" />
     </g>
     <ellipse
-       style="opacity:0.5;vector-effect:none;fill:#00ffff;fill-opacity:1;stroke:none;stroke-width:0.396875;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:0.79375, 0.79375;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers fill stroke"
+       style="opacity:1;vector-effect:none;fill:#97c2fc;fill-opacity:1;stroke:#2b7ce9;stroke-width:0.529167;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers fill stroke;font-variation-settings:normal;stop-color:#000000;stop-opacity:1"
        id="path3024-7-4"
        cx="162.27402"
        cy="161.55421"
@@ -467,7 +467,7 @@
    style="font-size:4.58611px;baseline-shift:sub;stroke-width:0.264583"
    id="tspan6367-2">2</tspan></tspan></text>
     <ellipse
-       style="opacity:0.5;vector-effect:none;fill:#00ffff;fill-opacity:1;stroke:none;stroke-width:0.396875;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:0.79375, 0.79375;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers fill stroke"
+       style="opacity:1;mix-blend-mode:screen;vector-effect:none;fill:#97c2fc;fill-opacity:1;stroke:#2b7ce9;stroke-width:0.529167;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers fill stroke"
        id="path3024-7-6"
        cx="106.36992"
        cy="105.69058"

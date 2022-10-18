@@ -20,14 +20,6 @@ function redraw() {
 		visConfig: {
 			nodes: {
 				shape: 'box',
-				size: 160,
-				scaling: {
-					label: {
-						enabled: true,
-						min: 80,
-						max: 120,
-						}
-					}
 				},
 			edges: {
 				arrows: {
@@ -40,20 +32,9 @@ function redraw() {
 				property: {
 					label: "name",
 					},
-				// size: "pagerank",
-				// community: "community",
-				// [NeoVis.NEOVIS_ADVANCED_CONFIG]: {
-					static: {
-						// font: {	size: 26, color: "#ff0000" },
-						// shape: 'square',
-						scaling: {
-							min: 50,
-							max: 100,
-							label: { enabled: true },
-							},
-						widthConstraint: { maximum: 150 }
-						}
-				//	}
+				static: {
+					widthConstraint: { maximum: 150 }
+					}
 				}
 			},
 		relationships: {

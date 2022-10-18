@@ -42,6 +42,10 @@ Create relationship:
 	MATCH (a:Char), (b:Char) WHERE ID(a) - ID(b) = 1
 	CREATE (a)-[r:Smaller]->(b)
 
+Set properties:
+	MATCH (n:Node) WHERE ID(n)=$id
+	SET n.name = $NewName
+
 Create new node with relationship to old node:
 	MATCH (old:Node {id:'1'})
 	CREATE (old) -[:RELATED_TO]-> (new:Node {id:'2'})

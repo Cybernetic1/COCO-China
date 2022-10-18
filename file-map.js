@@ -27,7 +27,7 @@ function showPerson(e) {
 			var canvas = file.children[0];
 			var ctx = canvas.getContext("2d");
 			ctx.beginPath();
-			ctx.fillStyle = "magenta";
+			ctx.fillStyle = "cyan";
 			ctx.clearRect(0, 0, 300, 200);
 			ctx.rect(0, 0, 3 * file.contribs[this.value], 200);
 			ctx.fill();
@@ -50,3 +50,5 @@ function showPerson2(e) {
 		document.getElementById("PersonStats2").innerHTML = "Name: " + names[this.value] + "<br>Tokens: 10,000";
 		}
 	}
+
+radioButtons[0].click();
