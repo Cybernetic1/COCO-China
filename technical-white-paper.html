@@ -187,6 +187,10 @@
 
 <p>（任务表中的链接并不太重要，因为任何小组都可以发讯息到其他小组，如有需要即可。）</p>
 
+<p>Link Nodes：用滑鼠先后点击 nodes ① &amp; ②，然后按钮将它们连接。</p>
+
+<p>Create / Update Nodes：先填写好资料，选择 node ①，然后按钮。</p>
+
 <div id="viz-buttons" style="display:inline">
 	<div>
 		<button type="button" onclick="redraw()">⟳<br>
@@ -216,16 +220,16 @@
 
 <div id="new-task-data" style="display: inline-block; vertical-align: top;">
 	<p><span style="font-size:30px">③</span>= New Task:</p>
-	<label for="taskname">Name</label><br>
+	<label for="taskname">Task Name</label><br>
 	<input type="text" id="TaskName" name="TaskName"><br>
-	<label for="expTokens">Expected tokens</label><br>
-	<input type="number" id="ExpTokens" name="ExpTokens"><br>
-	<label for="expTime">Expected time</label><br>
-	<input type="number" id="ExpTime" name="ExpTime"><br>
-	<label for="expTokens">Expected #workers</label><br>
-	<input type="number" id="ExpWorkers" name="ExpWorkers"><br>
-	<label for="Details">Details</label><br>
-	<textarea rows = "10" cols = "30" name = "Details">Enter details here...
+	<label for="expTokens" disabled>Expected tokens</label><br>
+	<input type="number" id="ExpTokens" name="ExpTokens" disabled><br>
+	<label for="expTime" disabled>Expected time</label><br>
+	<input type="number" id="ExpTime" name="ExpTime" disabled><br>
+	<label for="expTokens" disabled>Expected #workers</label><br>
+	<input type="number" id="ExpWorkers" name="ExpWorkers" disabled><br>
+	<label for="Details" disabled>Details</label><br>
+	<textarea rows = "10" cols = "30" name = "Details" disabled>Enter details here...
 	</textarea>
 </div>
 <div id="viz" style="display: inline-block"></div>
