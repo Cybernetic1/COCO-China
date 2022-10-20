@@ -5,9 +5,13 @@
   --nodeBorder: #2b7ce9;
 }
 
+iframe {
+    border: none;
+}
+
 #viz {
-	width: 700px;
-	height: 700px;
+	width: 710px;
+	height: 100vw;
 	background-color: var(--bg);
 	}
 
@@ -67,5 +71,6 @@
 	}
 
 #new-task-data {
+	margin-right: 15px;
 	font-size: 20px;
 }

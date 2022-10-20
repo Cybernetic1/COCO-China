@@ -9,11 +9,10 @@
 	<link rel="stylesheet" type="text/css" href="css/file-map.css">
 	<link rel="stylesheet" type="text/css" href="css/tasks-graph.css">
 	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
-	<script src="js/neovis.js"></script>
-	<script src="js/neo4j-web.min.js"></script>
+	<!--script src="js/neo4j-web.min.js"></script-->
 </head>
 
-<body onload="redraw()">
+<!--body onload="redraw()"-->
 
 <img src="images/crossing-the-snow-3.jpg" style='width: 500px; object-fit: contain'>
 
@@ -234,10 +233,11 @@
 	<textarea rows = "5" cols = "30" name = "gitRefs" disabled>
 	</textarea>
 </div>
-<div id="viz" style="display: inline-block"></div>
+<!--div id="viz" style="display: inline-block"></div-->
+<iframe id="viz" src="python/pyVis.html"></iframe>
 
 <script src="js/vote-slider.js"></script>
 <script src="js/file-map.js"></script>
-<script src="js/tasks-graph.js"></script>
+<!--script src="js/tasks-graph.js"></script-->
 </body>
 </html>
