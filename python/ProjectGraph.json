@@ -1,0 +1,130 @@
+{
+  "nodes": [
+    {
+      "id": 0,
+      "label": "Root",
+      "shape": "box"
+    },
+    {
+      "id": 1,
+      "label": "\u5546\u4e1a\u8ba1\u5212\u4e66",
+      "shape": "box"
+    },
+    {
+      "id": 2,
+      "label": "\u6280\u672f\u767d\u76ae\u4e66",
+      "shape": "box"
+    },
+    {
+      "id": 3,
+      "label": "\u7f51\u7ad9",
+      "shape": "box"
+    },
+    {
+      "id": 4,
+      "label": "Git \u754c\u9762",
+      "shape": "box"
+    },
+    {
+      "id": 5,
+      "label": "Neo4j \u754c\u9762",
+      "shape": "box"
+    },
+    {
+      "id": 6,
+      "label": "\u804a\u5929\u5ba4 \u754c\u9762",
+      "shape": "box"
+    },
+    {
+      "id": 7,
+      "label": "DAO \u754c\u9762",
+      "shape": "box"
+    },
+    {
+      "id": 9,
+      "label": "fuckfgfgdfgdf",
+      "shape": "box",
+      "color": "pink"
+    },
+    {
+      "id": 10,
+      "label": "fuckfgfgdfgdf",
+      "shape": "box",
+      "color": "pink"
+    },
+    {
+      "id": 11,
+      "label": "fuckfgfgdfgdf",
+      "shape": "box",
+      "color": "pink"
+    }
+  ],
+  "edges": [
+    {
+      "id": "1-0",
+      "from": 1,
+      "to": 0,
+      "arrows": "to"
+    },
+    {
+      "id": "2-0",
+      "from": 2,
+      "to": 0,
+      "arrows": "to"
+    },
+    {
+      "id": "3-0",
+      "from": 3,
+      "to": 0,
+      "arrows": "to"
+    },
+    {
+      "id": "4-0",
+      "from": 4,
+      "to": 0,
+      "arrows": "to"
+    },
+    {
+      "id": "5-0",
+      "from": 5,
+      "to": 0,
+      "arrows": "to"
+    },
+    {
+      "id": "6-0",
+      "from": 6,
+      "to": 0,
+      "arrows": "to"
+    },
+    {
+      "id": "7-0",
+      "from": 7,
+      "to": 0,
+      "arrows": "to"
+    },
+    {
+      "id": "8-7",
+      "from": 8,
+      "to": 7,
+      "arrows": "to"
+    },
+    {
+      "id": "9-6",
+      "from": 9,
+      "to": 6,
+      "arrows": "to"
+    },
+    {
+      "id": "10-5",
+      "from": 10,
+      "to": 5,
+      "arrows": "to"
+    },
+    {
+      "id": "11-2",
+      "from": 11,
+      "to": 2,
+      "arrows": "to"
+    }
+  ]
+}
