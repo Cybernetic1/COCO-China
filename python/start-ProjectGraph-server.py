@@ -17,6 +17,7 @@ from dash.dependencies import Input, Output, State
 import json
 
 app = dash.Dash(__name__)
+app.config.suppress_callback_exceptions = True
 
 app.layout = html.Div(style={'font-size':'20px'}, children=[
 	html.Button('Renew node ① details', id='renewNode'),
@@ -27,33 +28,32 @@ app.layout = html.Div(style={'font-size':'20px'}, children=[
 		style={'display':'inline-block', 'margin':'10px'}),
 	html.Br(),
 	html.Div([
-		html.Label("Task name", id='task_nameLabel'),
+		html.Label("Task name", id='task_name_label'),
 		html.Br(),
 		dcc.Input(id = 'task_name',
 			placeholder = 'Task name:',
 			type = 'text',
 			value = '' ),
 		html.Div([
-			dcc.RadioItems(id = 'Status',
+			dcc.RadioItems(id = 'task_status',
 				options=[
 					{'label': 'In Progress', 'value': None},
-					{'label': 'Done', 'value': 'pink'},
-					{'label': 'Paused', 'value': '#bbbbbb'} ],
+					{'label': 'Done', 'value': '#f77'},
+					{'label': 'Paused', 'value': '#999'} ],
 				labelStyle={'display': 'block'},
 				style = {'display':'inline-block'},
 				value = None),
 			html.Div([
-				html.Label("[blue]", style={'color':'#3333ff'}, id='statusColor'),	# id is dummy
+				html.Label("[blue]", style={'color':'#33f'}, id='dummy'),
 				html.Br(),
-				html.Label("[pink]", style={'color':'#ff4444'}),
+				html.Label("[red]", style={'color':'#f44'}),
 				html.Br(),
-				html.Label("[grey]", style={'color':'#777777'}),
+				html.Label("[grey]", style={'color':'#777'}),
 				], style={'display':'inline-block', 'margin-left':'20px'})
 			]),
-		dcc.Input(id = 'details',
-			placeholder = 'Task details:',
-			type = 'text',
-			style = {'height':'730px'},
+		dcc.Textarea(id = 'task_details',
+			placeholder = 'Task details...',
+			style = {'height': 730},
 			value = '' ),
 		], style = {'display':'inline-block', 'vertical-align':'top'}),
 	html.Div([
@@ -80,6 +80,7 @@ selected_node_2 = None
 
 task_name = ""
 task_status = None
+task_details = ""
 
 def ordinal(a, b):
 	"""
@@ -133,7 +134,7 @@ def clicked_node(selected):
 	name_2 = next((n['label'] for n in net['nodes'] if n["id"] == selected_node_2), "none")
 	return "②=[" + name_2 + "] ①=[" + name_1 + "]"
 
-@app.callback(								# Task Name changed by clicking node
+@app.callback(								# Task Name should change when node clicked
 	Output(component_id='task_name', component_property='value'),
 	Input('net', 'selection'))
 def myfun(selected):
@@ -143,23 +144,57 @@ def myfun(selected):
 		return val
 	return None
 
+@app.callback(								# Task Details should change when node clicked
+	Output(component_id='task_details', component_property='value'),
+	Input('net', 'selection'))
+def myfun(selected):
+	if selected is not None and len(selected['nodes']) > 0:
+		s = selected['nodes'][0]
+		found = next((n for n in net['nodes'] if n["id"] == s), None)
+		if 'details' in found:
+			return found['details']
+	return ""
+
+@app.callback(								# Task Status should change when node clicked
+	Output(component_id='task_status', component_property='value'),
+	Input('net', 'selection'))
+def myfun(selected):
+	if selected is not None and len(selected['nodes']) > 0:
+		s = selected['nodes'][0]
+		found = next((n for n in net['nodes'] if n["id"] == s), None)
+		if 'color' in found:
+			return found['color']
+	return None
+
 @app.callback(								# typing in Task Name
-	Output(component_id='task_nameLabel', component_property='children'),
-	Input(component_id='task_name', component_property='value'),
+	Output('task_name_label', 'children'),
+	Input('task_name', 'value'),
 	)
 def myfun(val):
 	global task_name
 	task_name = val
 	return "Task name = " + (val if val is not None else "")
 
-@app.callback(								# Task status changed
-    Output('statusColor', 'style'),
-    Input('Status', 'value'))
+@app.callback(								# typing in Task Details
+	# dummy output:
+	Output('dummy', 'style'),
+	Input('task_details', 'value'),
+	)
+def myfun(val):
+	global task_details
+	task_details = val
+	# must return this (dummy) value:
+	return {'color':'33f'}
+
+@app.callback(								# Task status radio button changed
+	# dummy output:
+    Output('task_name_label', 'style'),
+    Input('task_status', 'value'))
 def myfun(val):
 	global task_status
 	print("Status =", val)
 	task_status = val
-	return {'color':'#3333ff'}
+	return None
 
 @app.callback(								# Click various buttons
 	Output('net', 'data'),
@@ -171,7 +206,7 @@ def myfun(val):
 	dash.dependencies.Input('loadGraph', 'n_clicks')
 	)
 def myfun(btn1, btn2, btn3, btn4, btn5, btn6):
-	global net, node_index, task_name, task_status, selected_node_1, selected_node_2
+	global net, node_index, task_name, task_status, task_details, selected_node_1, selected_node_2
 	print("node_index =", node_index)
 	print("task_name =", task_name)
 	print("selected_node_1 =", selected_node_1)
@@ -216,6 +251,7 @@ def myfun(btn1, btn2, btn3, btn4, btn5, btn6):
 				if task_name is not None:
 					n['label'] = task_name
 				n['color'] = task_status
+				n['details'] = task_details
 				# etc ...
 		return net
 
