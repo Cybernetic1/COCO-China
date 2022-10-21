@@ -26,6 +26,27 @@ styles = {
 }
 
 app.layout = html.Div([
+	html.Label("Task name", id='task_nameLabel'),
+	html.Br(),
+	dcc.Input(id = 'task_name',
+		placeholder = 'Task name:',
+		type = 'text',
+		style = {'display':'inline-block'},
+		value = '' ),
+	dcc.RadioItems(id = 'Status',
+		options=[
+			{'label': 'In Progress', 'value': None},
+			{'label': 'Done', 'value': 'done'} ],
+		style = {'display':'inline-block'},
+		value = None),
+	html.Label("[Color = ●]", id='statusColor', style={'color':'red', 'margin':'10px'}),
+	html.Button('Renew node ① details', id='renewNode'),
+	html.Button('Add to node ①', id='addNode'),
+	html.Button('Delete node ①', id='delNode'),
+	html.Button('Link nodes ②⇢①', id='linkNodes'),
+	html.P(children = "②=none ①=none", id='selectedNode',
+		style={'display':'inline-block', 'margin':'10px'}),
+	html.Br(),
 	visdcc.Network(id = 'net',
 		options = dict(height= '600px', width= '100%'),
 		style = {
@@ -38,29 +59,9 @@ app.layout = html.Div([
 			# bold: '16px arial black'
 			}
 		}}),
-	html.Label("Task name", id='task_nameLabel'),
 	html.Br(),
-	dcc.Input(id = 'task_name',
-		placeholder = 'Task name:',
-		type = 'text',
-		style = {'display':'inline-block'},
-		value = '' ),
-	dcc.RadioItems(id = 'Status',
-		options=[
-			{'label': 'In Progress', 'value': None},
-			{'label': 'Done', 'value': 'pink'} ],
-		style = {'display':'inline-block'},
-		value = None),
-	html.Label("  [Color = ●]", id='taskStatus', style={'color':'red'}),
-	html.Br(),html.Br(),
-	html.Button('Add node', id='addNode'),
-	html.Button('Delete node', id='delNode'),
-	html.Button('Link nodes', id='linkNodes'),
-	html.Button('Renew node details', id='renewNode'),
-	html.P(children = "Selected Nodes: ②=none ①=none", id='selectedNode'),
-	html.Br(),
-	html.Button('Save graph', id='saveGraph'),
-	html.Button('Load graph', id='loadGraph'),
+	html.Button('Save ProjectGraph.json', id='saveGraph'),
+	html.Button('Load ProjectGraph.json', id='loadGraph'),
 ])
 
 selected_node_1 = None
@@ -119,7 +120,7 @@ def clicked_node(selected):
 			selected_node_1 = newNode
 	name_1 = next((n['label'] for n in net['nodes'] if n["id"] == selected_node_1), "none")
 	name_2 = next((n['label'] for n in net['nodes'] if n["id"] == selected_node_2), "none")
-	return "Selected Nodes: ②=[" + name_2 + "] ①=[" + name_1 + "]"
+	return "②=[" + name_2 + "] ①=[" + name_1 + "]"
 
 @app.callback(								# Task Name changed by clicking node
 	Output(component_id='task_name', component_property='value'),
@@ -141,16 +142,16 @@ def myfun(val):
 	return "Task name = " + (val if val is not None else "")
 
 @app.callback(								# Task status = Done / inProgress
-    Output('taskStatus', 'style'),
+    Output('statusColor', 'style'),
     Input('Status', 'value'))
 def myfun(val):
 	global task_status
 	print("Status =", val)
 	task_status = val
-	if val == 'pink':
-		return {'color':'red'}
+	if val == 'done':
+		return {'color':'red', 'margin':'10px'}
 	else:
-		return {'color':'blue'}
+		return {'color':'blue', 'margin':'10px'}
 
 @app.callback(								# Click various buttons
 	Output('net', 'data'),

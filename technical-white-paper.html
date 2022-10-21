@@ -7,12 +7,8 @@
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<link rel="stylesheet" type="text/css" href="css/vote-slider.css">
 	<link rel="stylesheet" type="text/css" href="css/file-map.css">
-	<link rel="stylesheet" type="text/css" href="css/tasks-graph.css">
 	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
-	<!--script src="js/neo4j-web.min.js"></script-->
 </head>
-
-<!--body onload="redraw()"-->
 
 <img src="images/crossing-the-snow-3.jpg" style='width: 500px; object-fit: contain'>
 
@@ -183,13 +179,15 @@
 
 <h2>任务表</h2>
 
-<p>（任务表中的链接并不太重要，因为任何小组都可以发讯息到其他小组，如有需要即可。）</p>
+<p>任务表中的链接并不太重要，因为任何小组都可以发讯息到其他小组，如有需要即可。</p>
 
-<p>Link Nodes：用滑鼠先后点击 nodes ① &amp; ②，然后按钮将它们连接。</p>
+<p>If ProjectGraph does not display, please start the server via:<br>
+<pre style="margin-left: 40px;">cd python<br>python start-ProjectGraph-server.py</pre></p>
 
-<p>Create / Update Nodes：先填写好资料，选择 node ①，然后按钮。</p>
+<p>按钮：<br>Link Nodes：用滑鼠先后点击 nodes ① &amp; ②，然后按钮将它们连接。<br>
+Create / Update Nodes：先填写好资料，选择 node ①，然后按钮。</p>
 
-<div id="viz-buttons" style="display:inline">
+<!--div id="viz-buttons" style="display:inline">
 	<div>
 		<button type="button" onclick="redraw()">⟳<br>
 		<small>Redraw</small></button>
@@ -232,13 +230,10 @@
 	<label for="gitRefs" disabled>Git references</label><br>
 	<textarea rows = "5" cols = "30" name = "gitRefs" disabled>
 	</textarea>
-</div>
-<!--div id="viz" style="display: inline-block"></div-->
-<iframe id="viz" src="http://127.0.0.1:8050"></iframe>
-<p>Sorry, this demo is broken now.  We're migrating to use VisDCC which is a Vis.js + Dash thing.</p>
+</div-->
+<iframe id="viz" src="http://127.0.0.1:8050" style="height:900px; width:100%; border: none;"></iframe>
 
 <script src="js/vote-slider.js"></script>
 <script src="js/file-map.js"></script>
-<!--script src="js/tasks-graph.js"></script-->
 </body>
 </html>
