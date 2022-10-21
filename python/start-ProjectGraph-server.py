@@ -1,5 +1,4 @@
 # TO-DO:
-# * ability to delete edges
 
 # DONE:
 # * radio buttons for Done (pink) vs In-progress
@@ -8,6 +7,7 @@
 # * fill task_name when select node
 # * add "Paused" task status
 # * add "Description" for nodes
+# * ability to delete edges
 
 import dash
 import visdcc
