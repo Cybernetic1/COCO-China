@@ -23,7 +23,7 @@ app.config.suppress_callback_exceptions = True
 app.layout = html.Div(style={'font-size':'20px'}, children=[
 	html.Button('Renew node ① details', id='renewNode'),
 	html.Button('Add to node ①', id='addNode'),
-	html.Button('Delete node ①', id='delNode'),
+	html.Button('Delete node ① or edge', id='delNode_or_Edge'),
 	html.Button('Link nodes ②⇢①', id='linkNodes'),
 	html.P(children = "②=none ①=none", id='selectedNode',
 		style={'display':'inline-block', 'margin':'10px'}),
@@ -78,6 +78,7 @@ app.layout = html.Div(style={'font-size':'20px'}, children=[
 
 selected_node_1 = None
 selected_node_2 = None
+selected_edge = None
 
 task_name = ""
 task_status = None
@@ -130,17 +131,24 @@ def set_node_index():
 
 # ===== Process callback events =====
 
-@app.callback(								# select Node in graph
+@app.callback(								# select Node / Edge in graph
 	Output('selectedNode', 'children'),
 	Input('net', 'selection'))
 def clicked_node(selected):
-	global selected_node_1, selected_node_2
+	global selected_node_1, selected_node_2, selected_edge
 	print("selected =", selected)
-	if selected is not None and len(selected['nodes']) > 0:
-		newNode = selected['nodes'][0]
-		if selected_node_1 != newNode:
-			selected_node_2 = selected_node_1
-			selected_node_1 = newNode
+	if selected is not None:
+		if len(selected['nodes']) > 0:
+			newNode = selected['nodes'][0]
+			if selected_node_1 != newNode:
+				selected_node_2 = selected_node_1
+				selected_node_1 = newNode
+		elif len(selected['edges']) > 0:
+			selected_node_1 = None
+			selected_node_2 = None
+			selected_edge = selected['edges'][0]
+			return "edge:" + selected_edge
+	selected_edge = None
 	name_1 = next((n['label'] for n in net['nodes'] if n["id"] == selected_node_1), "none")
 	name_2 = next((n['label'] for n in net['nodes'] if n["id"] == selected_node_2), "none")
 	return "②=[" + name_2 + "] ①=[" + name_1 + "]"
@@ -210,7 +218,7 @@ def myfun(val):
 @app.callback(								# Click various buttons
 	Output('net', 'data'),
 	dash.dependencies.Input('addNode', 'n_clicks'),
-	dash.dependencies.Input('delNode', 'n_clicks'),
+	dash.dependencies.Input('delNode_or_Edge', 'n_clicks'),
 	dash.dependencies.Input('linkNodes', 'n_clicks'),
 	dash.dependencies.Input('renewNode', 'n_clicks'),
 	dash.dependencies.Input('saveGraph', 'n_clicks'),
@@ -232,7 +240,12 @@ def myfun(btn1, btn2, btn3, btn4, btn5, btn6):
 		node_index += 1
 		return net
 
-	if button_id[:7] == 'delNode':
+	if button_id[:15] == 'delNode_or_Edge':
+		if selected_edge is not None:
+			for e in net['edges']:
+				if e['id'] == selected_edge:
+					net['edges'].remove(e)
+			return net
 		print("# nodes =", len(net['nodes']))
 		for n in net['nodes']:
 			print("matching:", n)
