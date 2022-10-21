@@ -120,6 +120,8 @@ for n in init_nodes[1:]:
 
 # When new network is loaded, need to set index > all other nodes
 def set_node_index():
+	global node_index
+	node_index = 0
 	for n in net['nodes']:
 		if n['id'] > node_index:
 			node_index = n['id']
