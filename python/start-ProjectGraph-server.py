@@ -1,5 +1,5 @@
 # TO-DO:
-# * add "Description" for nodes
+# * ability to delete edges
 
 # DONE:
 # * radio buttons for Done (pink) vs In-progress
@@ -7,6 +7,7 @@
 # * color node bug (fixed: set global variable)
 # * fill task_name when select node
 # * add "Paused" task status
+# * add "Description" for nodes
 
 import dash
 import visdcc
@@ -99,12 +100,12 @@ def ordinal(a, b):
 
 # ===== Create initial Project Graph =====
 
-nodes = ["Root", "商业计划书", "技术白皮书", "网站", "Git 界面", "Neo4j 界面",
+init_nodes = ["Root", "商业计划书", "技术白皮书", "网站", "Git 界面", "Neo4j 界面",
 	"聊天室 界面", "DAO 界面"]
 
 net = { 'nodes': [], 'edges': []}
 node_index = 0
-for n in nodes:
+for n in init_nodes:
 	net['nodes'].append({'id': node_index, 'label': n, 'shape': 'box'})
 	node_index += 1
 
@@ -113,9 +114,17 @@ net['nodes'][0]['color'] = 'cyan'
 # net['nodes'][0]['style'] = {'font': { 'size': 24, 'color': 'white' }}
 
 node_index = 1
-for n in nodes[1:]:
+for n in init_nodes[1:]:
 	net['edges'].append({'id': ordinal(node_index, 0), 'from': node_index, 'to': 0, 'arrows': 'to'})
 	node_index += 1
+
+# When new network is loaded, need to set index > all other nodes
+def set_node_index():
+	for n in net['nodes']:
+		if n['id'] > node_index:
+			node_index = n['id']
+	node_index += 1
+	return
 
 # ===== Process callback events =====
 
@@ -267,7 +276,8 @@ def myfun(btn1, btn2, btn3, btn4, btn5, btn6):
 		with open("ProjectGraph.json", "r") as infile:
 			json_str = infile.read()
 		net = json.loads(json_str)
-		print("Net = ", net)
+		# print("Net = ", net)
+		set_node_index()
 		return net
 
 	return net
