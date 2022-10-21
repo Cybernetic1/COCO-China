@@ -1,45 +1,24 @@
 # TO-DO:
+# * add "Description" for nodes
 
 # DONE:
 # * radio buttons for Done (pink) vs In-progress
 # * link nodes
 # * color node bug (fixed: set global variable)
 # * fill task_name when select node
+# * add "Paused" task status
 
 import dash
 import visdcc
 from dash import dcc, html, callback_context
+# import dash_core_components as dcc
 from dash.dependencies import Input, Output, State
 # from dash import Dash, Input, Output, State, dcc, html, callback_context
 import json
 
 app = dash.Dash(__name__)
 
-# --bg: #C9F9FF;
-
-styles = {
-	'pre': {
-		'width': '60px',
-		'border': 'thin solid black',
-		'overflowX': 'scroll'
-	}
-}
-
-app.layout = html.Div([
-	html.Label("Task name", id='task_nameLabel'),
-	html.Br(),
-	dcc.Input(id = 'task_name',
-		placeholder = 'Task name:',
-		type = 'text',
-		style = {'display':'inline-block'},
-		value = '' ),
-	dcc.RadioItems(id = 'Status',
-		options=[
-			{'label': 'In Progress', 'value': None},
-			{'label': 'Done', 'value': 'done'} ],
-		style = {'display':'inline-block'},
-		value = None),
-	html.Label("[Color = ●]", id='statusColor', style={'color':'red', 'margin':'10px'}),
+app.layout = html.Div(style={'font-size':'20px'}, children=[
 	html.Button('Renew node ① details', id='renewNode'),
 	html.Button('Add to node ①', id='addNode'),
 	html.Button('Delete node ①', id='delNode'),
@@ -47,18 +26,50 @@ app.layout = html.Div([
 	html.P(children = "②=none ①=none", id='selectedNode',
 		style={'display':'inline-block', 'margin':'10px'}),
 	html.Br(),
-	visdcc.Network(id = 'net',
-		options = dict(height= '600px', width= '100%'),
-		style = {
-		'background-color': '#C9F9FF',
-		'nodes': {
-		'font': {
-			# required: enables displaying <b>text</b> in the label as bold text
-			'multi': 'html',
-			# optional: use this if you want to specify the font of bold text
-			# bold: '16px arial black'
-			}
-		}}),
+	html.Div([
+		html.Label("Task name", id='task_nameLabel'),
+		html.Br(),
+		dcc.Input(id = 'task_name',
+			placeholder = 'Task name:',
+			type = 'text',
+			value = '' ),
+		html.Div([
+			dcc.RadioItems(id = 'Status',
+				options=[
+					{'label': 'In Progress', 'value': None},
+					{'label': 'Done', 'value': 'pink'},
+					{'label': 'Paused', 'value': '#bbbbbb'} ],
+				labelStyle={'display': 'block'},
+				style = {'display':'inline-block'},
+				value = None),
+			html.Div([
+				html.Label("[blue]", style={'color':'#3333ff'}, id='statusColor'),	# id is dummy
+				html.Br(),
+				html.Label("[pink]", style={'color':'#ff4444'}),
+				html.Br(),
+				html.Label("[grey]", style={'color':'#777777'}),
+				], style={'display':'inline-block', 'margin-left':'20px'})
+			]),
+		dcc.Input(id = 'details',
+			placeholder = 'Task details:',
+			type = 'text',
+			style = {'height':'730px'},
+			value = '' ),
+		], style = {'display':'inline-block', 'vertical-align':'top'}),
+	html.Div([
+		visdcc.Network(id = 'net',
+			options = dict(height= '880px', width= '950px'),
+			style = {
+			'background-color': '#C9F9FF',
+			'nodes': {
+			'font': {
+				# required: enables displaying <b>text</b> in the label as bold text
+				'multi': 'html',
+				# optional: use this if you want to specify the font of bold text
+				# bold: '16px arial black'
+				}
+			}})
+		], style = {'display':'inline-block'}),
 	html.Br(),
 	html.Button('Save ProjectGraph.json', id='saveGraph'),
 	html.Button('Load ProjectGraph.json', id='loadGraph'),
@@ -141,17 +152,14 @@ def myfun(val):
 	task_name = val
 	return "Task name = " + (val if val is not None else "")
 
-@app.callback(								# Task status = Done / inProgress
+@app.callback(								# Task status changed
     Output('statusColor', 'style'),
     Input('Status', 'value'))
 def myfun(val):
 	global task_status
 	print("Status =", val)
 	task_status = val
-	if val == 'done':
-		return {'color':'red', 'margin':'10px'}
-	else:
-		return {'color':'blue', 'margin':'10px'}
+	return {'color':'#3333ff'}
 
 @app.callback(								# Click various buttons
 	Output('net', 'data'),
