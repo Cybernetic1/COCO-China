@@ -19,7 +19,7 @@ async def on_message(message):
     if message.author == client.user:
         print("Self-detected:", client.user)
 
-    if message.content.startswith('$hello'):
+    if message.content.startswith('$hi'):
         await message.channel.send('Hello!')
 
 client.run(os.getenv('TOKEN'))
