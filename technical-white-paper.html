@@ -184,8 +184,14 @@
 <p>If ProjectGraph does not display, please start the server via:<br>
 <pre style="margin-left: 40px;">cd python<br>python start-ProjectGraph-server.py</pre></p>
 
+<p>But you also need to install VisDCC first:<br>
+<pre style="margin-left: 40px;">pip install visdcc<br>
+pip install dash==2.3.0</pre></p>
+
 <p>按钮：<br>Link Nodes：用滑鼠先后点击 nodes ① &amp; ②，然后按钮将它们连接。<br>
 Create / Update Nodes：先填写好资料，选择 node ①，然后按钮。</p>
+
+<iframe id="viz" src="http://127.0.0.1:8050" style="height:1000px; width:100%; border: none;"></iframe>
 
 <!--div id="viz-buttons" style="display:inline">
 	<div>
@@ -231,7 +237,6 @@ Create / Update Nodes：先填写好资料，选择 node ①，然后按钮。</
 	<textarea rows = "5" cols = "30" name = "gitRefs" disabled>
 	</textarea>
 </div-->
-<iframe id="viz" src="http://127.0.0.1:8050" style="height:1000px; width:100%; border: none;"></iframe>
 
 <script src="js/vote-slider.js"></script>
 <script src="js/file-map.js"></script>
