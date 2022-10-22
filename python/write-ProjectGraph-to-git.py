@@ -4,11 +4,47 @@
 # Organized by distance from "Root"
 
 import os
+import json
+import re
 
 with open("ProjectGraph.json", "r") as infile:
 	json_str = infile.read()
 net = json.loads(json_str)
-print("Net = ", net)
+# print("Net = ", net)
+
+# If test-run, only print results
+def mkdir(d):
+	print("mkdir " + d)
+	#os.mkdir(d)	# comment this out, you
+	return
+
+# Clean filename of any unwanted chars, allowing Chinese chars etc to remain
+def clean_name(name):
+	return ''.join(
+		map(lambda ch: '%%%02x' % ord(ch)
+		if re.match(r"[/\\?%*:|\"<>\x7F\x00-\x1F]", ch)
+		else ch, name) )
+
+# Inverse function of the above
+# TO-DO:  need rigorous proof that the inverve holds
+# May need to escape the symbol % via % --> %% to prevent ambiguity
+def unclean_name(name):
+	return
+
+# print(clean_name("试吓先*.txt"))
+
+# Create node #i
+def create_dir_node(path, i):
+	node = next(n for n in net['nodes'] if n["id"] == i)
+	name = clean_name(node['label'])
+	mkdir(path + name + '[' + str(i) + ']')
+	"""
+	with open("nodes_n_edges.py", "w+") as outfile:
+		outfile.write(json_str)
+	with open("details.py", "w+") as outfile:
+		outfile.write(json_str)
+	"""
+	return
 
 # Algorithm:
 # 1. start from Root
@@ -18,34 +54,38 @@ print("Net = ", net)
 # 5.     create dirs for these nodes
 # 6. and so on...
 
-frontier = ['Root']
-create_dir_level(0)
-create_dir_node("Root")
+processed = [0]		# nodes that have been processed
+# blanket = subset of "processed" nodes whose children we need to process next
+# frontier = children of "blanket", to be processed now and would become "blanket" next
 
-# If test-run, only print results
-def mkdir(d):
-	print("mkdir " + d)
-	#os.mkdir(d)	# comment this out, you
-	return
-
-# Strip filename of any unwanted chars
-safe_chars = set(map(lambda x: ord(x), '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz+-_ .'))
-
-def clean_name(name):
-    return ''.join(map(lambda ch: chr(ch) if ch in safe_chars else '%%%02x' % ch, name.encode('utf-8')))
-
-clean = re.sub(r"[/\\?%*:|\"<>\x7F\x00-\x1F]", "-", dirty)
-
-# find all nodes connected to frontier nodes
-def create_dir_level(l):
-	mkdir("level" + str(l))
+# Find all nodes with edges TOWARDS nodes in blanket:
+def find_connected(frontier):
+	global processed
+	print("frontier =", frontier)
+	results = []
 	for f in frontier:
-		g = find_connected(f)
-		for node in g:
-			os.mkdir(node)
+		print("Find edges towards:", f)
+		for e in net['edges']:
+			if e["to"] == f:
+				print("  found:", e['id'])
+				newbie = e['from']
+				if newbie not in processed and \
+				   newbie not in frontier:
+					results.append(newbie)
+	print("new frontier =", results)
+	return results
 
-def create_dir_node(n):
-	mkdir("n")
-	with open("nodes_n_edges.json", "w+") as outfile:
-		json_str = infile.read()
-	
+frontier = [0]
+level = 0
+while len(frontier) > 0:
+	# Create new dir-level
+	path = "level" + str(level) + '/'
+	mkdir(path)
+	for f in frontier:
+		create_dir_node(path, f)
+	level += 1
+
+	results = find_connected(frontier)
+	processed += results
+	print ("processed =", processed)
+	frontier = results
