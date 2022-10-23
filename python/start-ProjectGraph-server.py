@@ -17,6 +17,9 @@ from dash.dependencies import Input, Output, State
 # from dash import Dash, Input, Output, State, dcc, html, callback_context
 import json
 
+# Local modules:
+import write_ProjectGraph_to_dir
+
 app = dash.Dash(__name__)
 app.config.suppress_callback_exceptions = True
 
@@ -74,6 +77,7 @@ app.layout = html.Div(style={'font-size':'20px'}, children=[
 	html.Br(),
 	html.Button('Save ProjectGraph.json', id='saveGraph'),
 	html.Button('Load ProjectGraph.json', id='loadGraph'),
+	html.Button('Write ProjectGraph to directory', id='writeGraph2Dir'),
 ])
 
 selected_node_1 = None
@@ -222,9 +226,10 @@ def myfun(val):
 	dash.dependencies.Input('linkNodes', 'n_clicks'),
 	dash.dependencies.Input('renewNode', 'n_clicks'),
 	dash.dependencies.Input('saveGraph', 'n_clicks'),
-	dash.dependencies.Input('loadGraph', 'n_clicks')
+	dash.dependencies.Input('loadGraph', 'n_clicks'),
+	dash.dependencies.Input('writeGraph2Dir', 'n_clicks')
 	)
-def myfun(btn1, btn2, btn3, btn4, btn5, btn6):
+def myfun(btn1, btn2, btn3, btn4, btn5, btn6, btn7):
 	global net, node_index, task_name, task_status, task_details, selected_node_1, selected_node_2
 	print("node_index =", node_index)
 	print("task_name =", task_name)
@@ -293,6 +298,10 @@ def myfun(btn1, btn2, btn3, btn4, btn5, btn6):
 		net = json.loads(json_str)
 		# print("Net = ", net)
 		set_node_index()
+		return net
+
+	if button_id[:14] == 'writeGraph2Dir':
+		write_ProjectGraph_to_dir.write_ProjectGraph_to_dir()
 		return net
 
 	return net

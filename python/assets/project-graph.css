@@ -7,13 +7,14 @@
   --nodeBorder: #2b7ce9;
 }
 
-.button:active {
+button:active {
+	background-color: var(--node);
 	box-shadow: box-shadow:
 	  7px 6px 28px 1px rgba(0, 0, 0, 0.5);
 	transform: translateY(4px);
 	/* Moving button 4px to y-axis */
 	}
-            
+
 /* Buttons –––––––––––––––––––––––––––––––––––––––––––––––––– */
 .button, button, input[type="submit"], input[type="reset"], input[type="button"] {
 	display: inline-block;
@@ -85,7 +86,8 @@ input[type="text"] {
 textarea {
 	font-size: 16px;
 	margin: 5px;
-	height': 730px;
+	height: 730px;
+	width: 300px;
 	/*height: 38px;
 	  padding: 6px 10px;
 	  background-color: #fff;
