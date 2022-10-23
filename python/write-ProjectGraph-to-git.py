@@ -1,16 +1,19 @@
 # Output Project Graph to Git repo
 # ================================
-# Each node = one directory
-# Organized by distance from "Root"
+# Each node = one file
+# Organized flatly
 
 import os
 import json
 import re
+import sys
 
 with open("ProjectGraph.json", "r") as infile:
 	json_str = infile.read()
 net = json.loads(json_str)
 # print("Net = ", net)
+
+TestRun = True
 
 # If test-run, only print results
 def mkdir(d):
@@ -33,59 +36,34 @@ def unclean_name(name):
 
 # print(clean_name("试吓先*.txt"))
 
-# Create node #i
-def create_dir_node(path, i):
-	node = next(n for n in net['nodes'] if n["id"] == i)
-	name = clean_name(node['label'])
-	mkdir(path + name + '[' + str(i) + ']')
-	"""
-	with open("nodes_n_edges.py", "w+") as outfile:
-		outfile.write(json_str)
-	with open("details.py", "w+") as outfile:
-		outfile.write(json_str)
-	"""
-	return
-
 # Algorithm:
-# 1. start from Root
-# 2. find all nodes pointing to root,
-# 3.     create dirs for these nodes
-# 4. find all nodes pointing to these nodes, minus those already dealt with
-# 5.     create dirs for these nodes
-# 6. and so on...
+#	Iterate over all nodes
+#	Create file, mention all edges connected to it (both to and from)
+#	List properties of node in the file
 
-processed = [0]		# nodes that have been processed
-# blanket = subset of "processed" nodes whose children we need to process next
-# frontier = children of "blanket", to be processed now and would become "blanket" next
-
-# Find all nodes with edges TOWARDS nodes in blanket:
-def find_connected(frontier):
-	global processed
-	print("frontier =", frontier)
-	results = []
-	for f in frontier:
-		print("Find edges towards:", f)
-		for e in net['edges']:
-			if e["to"] == f:
-				print("  found:", e['id'])
-				newbie = e['from']
-				if newbie not in processed and \
-				   newbie not in frontier:
-					results.append(newbie)
-	print("new frontier =", results)
-	return results
-
-frontier = [0]
-level = 0
-while len(frontier) > 0:
-	# Create new dir-level
-	path = "level" + str(level) + '/'
-	mkdir(path)
-	for f in frontier:
-		create_dir_node(path, f)
-	level += 1
-
-	results = find_connected(frontier)
-	processed += results
-	print ("processed =", processed)
-	frontier = results
+f = sys.stdout
+for n in net['nodes']:
+	filename = clean_name(n['label'])
+	if not TestRun:
+		f = open(filename, "w+")
+	print("\nFilename = " + filename, file=f)
+	i = n['id']
+	print("ID: " + str(i), file=f)
+	print("Name: " + n['label'], file=f)
+	if 'color' in n:
+		status = "Paused" if n['color'] == '999' else "Done"
+	else:
+		status = "In progree"
+	print("Status: " + status, file=f)
+	if 'details' in n:
+		print("Details: " + n['details'], file=f)
+	# find in-coming and out-going edges
+	in_edges = []
+	out_edges = []
+	for e in net['edges']:
+		if e["to"] == i:
+			in_edges.append(e['id'])
+		elif e['from'] == i:
+			out_edges.append(e['id'])
+	print("In-coming edges: " + str(in_edges), file=f)
+	print("Out-going edges: " + str(out_edges), file=f)
