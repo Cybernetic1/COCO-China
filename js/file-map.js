@@ -14,10 +14,6 @@ for (const file of files) {
 // Add event listeners to group of radio buttons:
 const radioButtons = document.querySelectorAll('input[name="person"]');
 
-for (const radioButton of radioButtons) {
-	radioButton.addEventListener('change', showPerson);
-	}
-
 function showPerson(e) {
 	// console.log(e);
 	if (this.checked) {
@@ -35,6 +31,12 @@ function showPerson(e) {
 		}
 	}
 
+for (const radioButton of radioButtons) {
+	radioButton.addEventListener('change', showPerson);
+	}
+
+// radioButtons[0].click();
+
 // Second verse, same as before
 
 const radioButtons2 = document.querySelectorAll('input[name="person2"]');
@@ -50,5 +52,3 @@ function showPerson2(e) {
 		document.getElementById("PersonStats2").innerHTML = "Name: " + names[this.value] + "<br>Tokens: 10,000";
 		}
 	}
-
-radioButtons[0].click();

@@ -1,4 +1,8 @@
 # TO-DO:
+# * list authors for each task
+# * first author self-claim # of credits for task
+# * needs others' vote to support
+# * final result = # of tokens for every author of task
 
 # DONE:
 # * radio buttons for Done (pink) vs In-progress
@@ -59,6 +63,9 @@ app.layout = html.Div(style={'font-size':'20px'}, children=[
 			placeholder = 'Task details...',
 			style = {'height': 730},
 			value = '' ),
+		html.Br(),
+		html.Label("Authors:", id='authors_label'),
+		html.Br(),
 		], style = {'display':'inline-block', 'vertical-align':'top'}),
 	html.Div([
 		visdcc.Network(id = 'net',
@@ -123,7 +130,7 @@ for n in init_nodes[1:]:
 	net['edges'].append({'id': ordinal(node_index, 0), 'from': node_index, 'to': 0, 'arrows': 'to'})
 	node_index += 1
 
-# When new network is loaded, need to set index > all other nodes
+# When new network is loaded, need to set index > all other indices
 def set_node_index():
 	global node_index
 	node_index = 0
@@ -133,7 +140,7 @@ def set_node_index():
 	node_index += 1
 	return
 
-# ===== Process callback events =====
+# ===== Handle callback events =====
 
 @app.callback(								# select Node / Edge in graph
 	Output('selectedNode', 'children'),
