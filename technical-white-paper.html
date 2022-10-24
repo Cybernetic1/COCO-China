@@ -9,8 +9,10 @@
 	<link rel="stylesheet" type="text/css" href="css/file-map.css">
 	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 	<!--script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script-->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/config/TeX-MML-AM_CHTML.js"></script>
 	<!--script type="text/javascript" id="MathJax-script"
-		async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"-->
+		async src="http://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"-->
 </head>
 
 <img src="images/crossing-the-snow-3.jpg" style='width: 500px; object-fit: contain'>
@@ -77,14 +79,19 @@
 	<p class="name">Total</p>
 	<pre class="score" id="total">0</pre>
 </div>
+<br>
 
-<h3>计分方法</h3>
+<hr>
 
-<p>Authors self-claim # of credits for a particular task: V_1, V_2, ... V_n</p>
+<h3>单一件工作的计分方法</h3>
 
-<p>Needs others' vote to support</p>
+<p>假设这件工作由 \(N\) 个作者 完成.  每个成员自行提出他(和其他作者)对这件工作所占的百分比 (%): \( p_1, p_2, ... p_n \), these distributions are weighted-averaged over all authors.  To be valid, the votings should reach quorum.</p>
 
-<p>Final result = # of tokens for every author of task</p>
+<p>The total tokens worth \( T \) for this task is also voted and weighted-averaged by authors.</p>
+
+<p>Non-authors may also vote on this task: either by altering the distribution \( p_i \) or by altering total value \( T \), but it seems dubious that outsiders could influence the work division, so let's not allow this option.</p>
+
+<p>Exceptions could be raised to seek external judgement.</p>
 
 <hr>
 
@@ -250,6 +257,6 @@ Create / Update Nodes：先填写好资料，选择 node ①，然后按钮。</
 </div-->
 
 <script src="js/vote-slider.js"></script>
-<script src="js/file-map.js"></script>
+<script src="js/file-map.js" defer></script>
 </body>
 </html>

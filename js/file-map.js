@@ -35,7 +35,10 @@ for (const radioButton of radioButtons) {
 	radioButton.addEventListener('change', showPerson);
 	}
 
-// radioButtons[0].click();
+window.onload = function() {
+	radioButtons[1].click();	// need this to trigger a change
+	radioButtons[0].click();
+	}
 
 // Second verse, same as before
 
