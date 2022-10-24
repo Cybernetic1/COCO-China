@@ -250,6 +250,7 @@ def myfun(btn1, btn2, btn3, btn4, btn5, btn6, btn7):
 		net['edges'].append({'id': ordinal(node_index, selected_node_1),
 			'from': node_index, 'to': selected_node_1, 'arrows': 'to'})
 		node_index += 1
+		print(chr(7))
 		return net
 
 	if button_id[:15] == 'delNode_or_Edge':
@@ -274,6 +275,7 @@ def myfun(btn1, btn2, btn3, btn4, btn5, btn6, btn7):
 		for e in collection:
 			net['edges'].remove(e)
 		# print("result =", net)
+		print(chr(7))
 		return net
 
 	if button_id[:9] == 'linkNodes':
@@ -289,6 +291,7 @@ def myfun(btn1, btn2, btn3, btn4, btn5, btn6, btn7):
 				n['color'] = task_status
 				n['details'] = task_details
 				# etc ...
+		print(chr(7))
 		return net
 
 	if button_id[:9] == 'saveGraph':
@@ -297,6 +300,7 @@ def myfun(btn1, btn2, btn3, btn4, btn5, btn6, btn7):
 		print("To save: ", json_str)
 		with open("ProjectGraph.json", "w+") as outfile:
 			outfile.write(json_str)
+		print(chr(7))
 		return net
 
 	if button_id[:9] == 'loadGraph':
@@ -305,10 +309,12 @@ def myfun(btn1, btn2, btn3, btn4, btn5, btn6, btn7):
 		net = json.loads(json_str)
 		# print("Net = ", net)
 		set_node_index()
+		print(chr(7))
 		return net
 
 	if button_id[:14] == 'writeGraph2Dir':
 		write_ProjectGraph_to_dir.write_ProjectGraph_to_dir()
+		print(chr(7))
 		return net
 
 	return net
