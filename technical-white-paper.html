@@ -81,17 +81,63 @@
 </div>
 <br>
 
+<p>我发觉 非整数版本 比较好用：</p>
+
+<div class="slidecontainer2">
+	<p class="name">Claris</p>
+	<pre class="score2">0</pre>
+	<input type="range" min="0" max="1000" value="0" class="slider2" id="0">
+</div>
+
+<div class="slidecontainer2">
+	<p class="name">Abeer</p>
+	<pre class="score2">0</pre>
+	<input type="range" min="0" max="1000" value="0" class="slider2" id="1">
+</div>
+
+<div class="slidecontainer2">
+	<p class="name">Pete</p>
+	<pre class="score2">0</pre>
+	<input type="range" min="0" max="1000" value="0" class="slider2" id="2">
+</div>
+
+<div class="slidecontainer2">
+	<p class="name">Eric</p>
+	<pre class="score2">0</pre>
+	<input type="range" min="0" max="1000" value="0" class="slider2" id="3">
+</div>
+
+<div class="slidecontainer2">
+	<p class="name">YKY</p>
+	<pre class="score2">0</pre>
+	<input type="range" min="0" max="1000" value="0" class="slider2" id="4">
+</div>
+
+<div class="slidecontainer2">
+	<p class="name">Roger</p>
+	<pre class="score2">0</pre>
+	<input type="range" min="0" max="1000" value="0" class="slider2" id="5">
+</div>
+
+<div class="slidecontainer2">
+	<p class="name">Total</p>
+	<pre class="score2" id="total2">0</pre>
+</div>
+<br>
+
 <hr>
 
 <h3>单一件工作的计分方法</h3>
 
-<p>假设这件工作由 \(N\) 个作者 完成.  每个成员自行提出他(和其他作者)对这件工作所占的百分比 (%): \( p_1, p_2, ... p_n \), these distributions are weighted-averaged over all authors.  To be valid, the votings should reach quorum.</p>
+<p>假设这件工作由 \(N\) 个作者 完成.  用上面的 UI, 每个成员自行提出他(和其他作者)在这件工作里所占的百分比 (%): \( p_1, p_2, ... p_n \)</p>
+
+<p>对所有作者 提交的百分比 做<b>加权平均</b>。 To be valid, the votings have to reach quorum.</p>
 
 <p>The total tokens worth \( T \) for this task is also voted and weighted-averaged by authors.</p>
 
-<p>Non-authors may also vote on this task: either by altering the distribution \( p_i \) or by altering total value \( T \), but it seems dubious that outsiders could influence the work division, so let's not allow this option.</p>
+<p>Non-authors may also vote on this task: either by altering the percentages \( p_i \) or by altering total value \( T \), but it seems dubious that outsiders could influence the percentages, so let's not allow this option.</p>
 
-<p>Exceptions could be raised to seek external judgement.</p>
+<p>Exceptions could be raised to seek external advice / resolution.</p>
 
 <hr>
 
