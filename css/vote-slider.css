@@ -1,3 +1,13 @@
+.name, .name2 {
+	font-size: 20px;
+	display:inline-block;margin-right:5px; width:10%;
+}
+
+.score, .score2 {
+	font-size: 20px;
+	display:inline-block;margin-right:5px; width:10%;
+}
+
 .slidecontainer, .slidecontainer2 {
     width: 100%; /* Width of the outside container */
     height: 35px;
@@ -21,16 +31,6 @@
     transition: opacity .2s;
 	/* added by YKY */
     display:inline-block; width:75%;
-}
-
-.name, .name2 {
-	font-size: 20px;
-	display:inline-block;margin-right:5px; width:10%;
-}
-
-.score, .score2 {
-	font-size: 20px;
-	display:inline-block;margin-right:5px; width:10%;
 }
 
 /* Mouse-over effects */
