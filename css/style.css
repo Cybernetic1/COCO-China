@@ -14,3 +14,8 @@ p, li, label {
 b, i {
 	color: Blue;
 }
+
+to-do::before {
+	color: Red;
+	content: "TO-DO:";
+}
