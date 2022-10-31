@@ -17,5 +17,5 @@ b, i {
 
 to-do::before {
 	color: Red;
-	content: "TO-DO:";
+	content: "TO-DO: ";
 }
