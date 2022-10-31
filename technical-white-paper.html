@@ -8,11 +8,8 @@
 	<link rel="stylesheet" type="text/css" href="css/vote-slider.css">
 	<link rel="stylesheet" type="text/css" href="css/file-map.css">
 	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
-	<!--script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script-->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/config/TeX-MML-AM_CHTML.js"></script>
-	<!--script type="text/javascript" id="MathJax-script"
-		async src="http://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"-->
 </head>
 
 <img src="images/crossing-the-snow-3.jpg" style='width: 500px; object-fit: contain'>
@@ -38,7 +35,7 @@
 	<li>Assign tokens</li>
 </ul>
 
-<p>这是 投票 demo，它会自动将总数调至 100：</p>
+<p>这是 投票 demo，它会自动将总数调至 100： (这是<b>整数</b>版本)</p>
 <div class="slidecontainer">
 	<p class="name">Claris</p>
 	<pre class="score">0</pre>
@@ -81,7 +78,7 @@
 </div>
 <br>
 
-<p>我发觉 非整数版本 比较好用：</p>
+<p>我发觉 <b>非整数</b>版本 比较好用：</p>
 
 <div class="slidecontainer2">
 	<p class="name">Claris</p>
@@ -131,7 +128,7 @@
 
 <p>假设这件工作由 \(N\) 个作者 完成.  用上面的 UI, 每个成员自行提出他(和其他作者)在这件工作里所占的百分比 (%): \( p_1, p_2, ... p_n \)</p>
 
-<p>对所有作者 提交的百分比 做<b>加权平均</b>。 To be valid, the votings have to reach quorum.</p>
+<p>对所有作者 提交的百分比 做<b>加权平均</b>。 To be valid, # of voters have to reach quorum.</p>
 
 <p>The total tokens worth \( T \) for this task is also voted and weighted-averaged by authors.</p>
 
@@ -255,7 +252,30 @@ pip install dash==2.3.0</pre></p>
 <p>按钮：<br>Link Nodes：用滑鼠先后点击 nodes ① &amp; ②，然后按钮将它们连接。<br>
 Create / Update Nodes：先填写好资料，选择 node ①，然后按钮。</p>
 
-<iframe id="viz" src="http://127.0.0.1:8050" style="height:1000px; width:100%; border: none;"></iframe>
+<iframe id="viz" src="" style="height:1010px; width:100%; border: none;">
+</iframe>
+
+<script type="text/javascript">
+	// **** Display alternative image if graph visualization doesn't work ****
+    var reader = new XMLHttpRequest();
+    var defaultLink = "http://127.0.0.1:8050";
+    var alt = "images/ProjectGraph-example.png";	// alternative
+
+    function checkReadyState() {
+		console.log("ready state =", reader.readyState);
+        if (reader.readyState === 4) {
+			console.log("status =", reader.status);
+            if (reader.status == 200)
+				document.getElementById('viz').src = defaultLink;
+            else if (reader.status == 0)
+				document.getElementById('viz').src = alt;
+			}
+		}
+
+    reader.open('get', defaultLink, true);
+    reader.onreadystatechange = checkReadyState;
+    reader.send(null);
+</script>
 
 <!--div id="viz-buttons" style="display:inline">
 	<div>

@@ -1,5 +1,6 @@
 body {
-	background-color: White; 
+	background-color: White;
+	font-size: 130%;
 }
 
 h1, h2, h3, a {
@@ -8,4 +9,8 @@ h1, h2, h3, a {
 
 p, li, label {
 	color: Black;
+}
+
+b, i {
+	color: Blue;
 }

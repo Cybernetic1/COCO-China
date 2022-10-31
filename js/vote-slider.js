@@ -16,7 +16,7 @@ for (var j = 0; sliders2[j]; j++) {
 var total2 = 0.0;
 for (var j = 0; j < max_j; j++)
 	total2 += scores2[j];
-console.log("total2 =", total2 / 10.0);
+// console.log("total2 =", total2 / 10.0);
 document.getElementById("total2").innerHTML = (total2 / 10.0).toFixed(2);
 
 // **** Update the current slider value (each time you drag the slider handle)
