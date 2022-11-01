@@ -6,6 +6,7 @@
 	<title>Crossing the Snow -- business proposal</title>
 	<link rel="stylesheet" href="css/style.css">
 	<link rel="stylesheet" type="text/css" href="css/vote-slider.css">
+	<link rel="stylesheet" type="text/css" href="css/file-map.css">
 	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 </head>
 
@@ -63,10 +64,10 @@
 <h2 lang="zh" id="naming">《渡过雪原》名字由来</h2>
 <h2 lang="en" id="naming">Origin of the Name "Snow Crossing"</h2>
 
-<p lang="zh">《渡过雪原》是日本家传户晓的作家 宫泽贤治 (Kenji Miyazawa) 在 1921年 写的童话故事。 两兄妹在雪地上遇到小狐狸，牠请他们吃玉米团。 「难道狐狸会骗人是假的？」，狐狸解释说那是谣传。 他们约好一起看幻灯片《不得喝酒》、《小心圈套》和《小心火焰》。 兄妹如期赴约，他们享受了美味的年糕和玉米团，看幻灯片。 穿着燕尾服的小狐狸致辞说： 牠们以后会以行动改变人类对牠们的误解。 晚会后，他们愉快地告别。</p>
-<p lang="en"><i>Crossing the Snow</i> is a children's story written by the well-loved Japanese writer Kenji Miyazawa in 1921.  A little brother and sister met a fox in the snow field, who offered them a corn cake to eat.  "Is the saying that foxes are liars not true?"  The fox said it is just a rumor.  They agreed to come to a dinner party organized by foxes and watch the slideshows "Do not drink wine", "Be careful of traps" and "Be careful of fires".  The brother and sister went as promised, and they enjoyed corn cakes and rice cakes and slideshows.  The fox dressed in a Tuxedo suit gave a speech, saying that foxes will from now on use their actions to prove that human conceptions of them were wrong.  After the part they happily bid each other farewell.
+<p lang="zh">《渡过雪原》是日本家传户晓的作家 宫泽贤治 (Kenji Miyazawa) 在 1921年 写的童话故事。 两兄妹在雪地上遇到小狐狸，牠请他们吃玉米团。 「难道狐狸会骗人是假的？」，狐狸解释说那是谣传。 他们约好一起看幻灯片《不得喝酒》、《小心圈套》和《小心火焰》。 兄妹如期赴约，他们享受了美味的年糕和玉米团，看幻灯片。 穿着燕尾服的小狐狸致辞说： 狐狸以后会以行动改变人类对牠们的误解。 晚会后，他们愉快地告别。</p>
+<p lang="en"><i>Crossing the Snow</i> is a children's story written by the well-loved Japanese writer Kenji Miyazawa in 1921.  A little brother and sister met a fox in the snow field, who offered them a corn cake to eat.  "Is the saying that foxes are liars not true?"  The fox said it is just a rumor.  They agreed to come to a dinner party organized by foxes and watch the slideshows "Do not drink wine", "Be careful of traps" and "Be careful of fires".  The brother and sister went as promised, and they enjoyed corn cakes and rice cakes and slideshows.  The little fox, dressed in a Tuxedo suit, gave a speech saying that foxes will from now on use their actions to prove that human's opinion of them was wrong.  After the part they happily bid each other farewell.
 </p>
-	
+
 <img src="images/crossing-the-snow.jpg">
 
 <p lang="zh">我们的《渡过雪原》宗旨是让全世界人类<b>不分种族</b>、建立<b>无国界公司</b>合作。</p>
@@ -80,7 +81,10 @@
 <p lang="zh">举例：4人合作写一首诗：</p>
 <p lang="en">Example: 4 people jointly write a poem:</p>
 
-<img src="images/DAO-working-example-EN.png" style='width: 900px; object-fit: contain'>
+<img lang="zh" src="images/DAO-working-example.png" style='width: 900px; object-fit: contain'>
+<img lang="en" src="images/DAO-working-example-EN.png" style='width: 900px; object-fit: contain'>
+
+<hr>
 
 <p lang="zh"><b>Project Graph 工作表</b> 让大家方便看到需要做的和已完成的工作，将复杂的项目<b>分解</b>为简单的工序：</p>
 <p lang="en">The <b>Project Graph</b> lets members see conveniently which tasks have been completed and which tasks remain to be done.  It allows a complex problem to be <b>decomposed</b> into more and more simpler parts:</p>
@@ -88,8 +92,61 @@
 <img lang="zh" src="images/ProjectGraph-example.png">
 <img lang="en" src="images/ProjectGraph-example-EN.png">
 
+<hr>
+
 <p lang="zh"><b>Git UI</b> 可以方便查看每一个工序的成员贡献，甚至新加入者也可以快速了解项目的进程：</p>
 <p lang="en">The <b>Git user interface</b> lets members to browse the Git repository of contributions that other members have made, so even new members can get a quick glimpse of the project's progress:</p>
+
+<div style="display: inline-block">
+	<center>
+	<p id="PersonStats">Name: <b>Claris</b><br>
+	Tokens: 10,000</p>
+	<img id="PersonPic" src="images/Claris.png" style='height: 120px; object-fit: contain'>
+	</center>
+</div>
+<div style="display: inline-block; width: 110px;">
+	<p class="PersonChooser" align="center">
+		<label><input type="radio" name="person" value=0><span>Claris</span></label>
+		<label><input type="radio" name="person" value=1><span>Abeer</span></label>
+		<label><input type="radio" name="person" value=2><span>Pete</span></label>
+		<label><input type="radio" name="person" value=3><span>Eric</span></label>
+	</p>
+</div>
+<div style="display: inline-block">
+	<p><strong>Files</strong></p>
+	<div id="Files">
+		<div class="File">
+			<canvas class="FileMap">Unsupported</canvas>
+			<label class="FileName">README.md</label class="FileName">
+		</div><br>
+		<div class="File">
+			<canvas class="FileMap">Unsupported</canvas>
+			<label class="FileName">main.py</label class="FileName">
+		</div><br>
+		<div class="File">
+			<canvas class="FileMap">Unsupported</canvas>
+			<label class="FileName">model.py</label class="FileName">
+		</div><br>
+		<div class="File">
+			<canvas class="FileMap">Unsupported</canvas>
+			<label class="FileName">introduction.html</label class="FileName">
+		</div><br>
+		<div class="File">
+			<canvas class="FileMap">Unsupported</canvas>
+			<label class="FileName">docs/</label class="FileName">
+		</div><br>
+		<div class="File">
+			<canvas class="FileMap">Unsupported</canvas>
+			<label class="FileName">AI-modern-approach.pdf</label class="FileName">
+		</div><br>
+		<div class="File">
+			<canvas class="FileMap">Unsupported</canvas>
+			<label class="FileName">diagram.svg</label class="FileName">
+		</div>
+	</div>
+</div>
+<script src="js/file-map.js" defer></script>
+<hr>
 
 <p lang="zh"><b>投票界面</b> 自动将总数调整至 100%：</p>
 <p lang="en">The <b>Voting UI</b> automatically adjusts the total to 100%:</p>
@@ -176,7 +233,7 @@
 <h2 lang="zh" id="AI">发展人工智能</h2>
 <h2 lang="en" id="AI">As Development Tool for AI</h2>
 
-<p lang="zh"><to-do/>《渡过雪原》可以用来发展复杂的人工智能系统.....</p>
+<p lang="zh"><to-do/>《渡过雪原》创立的其中一个目标是用来发展 AGI 人工智能系统，因为这种系统有很高的复杂性和安全性问题，需要集体的人类智慧去训练和监察..... 也可以说，这个项目是一个 AI 的 enabler.</p>
 <p lang="en"><to-do/><i>Snow-Crossing</i> can be used to develop AGI systems because of its ability to handle complex cooperation among humans.....</p>
 
 <hr>
@@ -286,11 +343,11 @@ YKY (甄景贤), independent AGI researcher from Hong Kong.  I want to live fore
 <div lang="en" style="overflow:auto;">
 Xinfa Xie, founder and CEO of "Good Taste No Wait"
 <ul>
-<li>South-Eastern University Mobile Communications 国家重点 Lab, Master's degree</li>
-<li>Former ZTE Comms Startup product manager, with 12 years of management experience</li>
+<li>South-Eastern Mobile Communications University, Key National Research Lab, Master's degree</li>
+<li>Former ZTE Communications Startup Product Manager, with 12 years of management experience</li>
 <li>In 2013, created "Good Taste No Wait" intelligent restuarant services, solving problems of efficiency, management, marketing, budgeting, and customer experience.</li>
 <li>In September 2016, recieved "50 Business Innovators of China" Award</li>
-<li>Now turned towards his passion in AGI</li>
+<li>Now turning towards his passion in AGI</li>
 </ul>
 </div>
 </section>
