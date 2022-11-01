@@ -2,6 +2,8 @@
 
 # Coco 合作平台 (China version)
 
+注意：我们打算移至 [Github COCO](https://github.com/Cybernetic1/COCO) , 合并为 中/英文 双语网站。 这边保留一些内地专用的工具。
+
 ## 简介
 
 Coco 是一个 去中心化，自主的，实名制的，开源的，盈利的，供线上合作项目 使用的 平台，用 积分 计算项目中每个成员的贡献量。
